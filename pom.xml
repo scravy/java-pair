@@ -9,6 +9,16 @@
 	<packaging>jar</packaging>
 
 	<name>Pair</name>
+	<url>https://github.com/scravy/java-pair</url>
+	<description>A tiny library that offers Pairs and nothing else.</description>
+
+	<developers>
+		<developer>
+			<name>Julian Fleischer</name>
+			<email>julian@scravy.de</email>
+			<url>http://www.scravy.de/</url>
+		</developer>
+	</developers>
 
 	<licenses>
 		<license>

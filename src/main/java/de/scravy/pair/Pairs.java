@@ -107,8 +107,6 @@ public class Pairs {
    * 
    * @param pair
    *          The pair.
-   * @param commonSuperType
-   *          A common super type that both First and Second inherit from.
    * @return The array of the common super type with length 2.
    */
   public static <CommonSuperType, First extends CommonSuperType, Second extends CommonSuperType>

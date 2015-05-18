@@ -2,6 +2,7 @@ package de.scravy.pair;
 
 import java.io.Serializable;
 import java.lang.reflect.Array;
+import java.util.Map;
 
 import lombok.experimental.UtilityClass;
 
@@ -101,6 +102,15 @@ public class Pairs {
     return toArray(pair, array, 0);
   }
 
+  /**
+   * Write a pair into an array of the common super type of both components.
+   * 
+   * @param pair
+   *          The pair.
+   * @param commonSuperType
+   *          A common super type that both First and Second inherit from.
+   * @return The array of the common super type with length 2.
+   */
   public static <CommonSuperType, First extends CommonSuperType, Second extends CommonSuperType>
       CommonSuperType[] toArray(
           final Pair<First, Second> pair,
@@ -174,5 +184,27 @@ public class Pairs {
     }
     // (x, /something/) and (x, /something/)
     return secondOfLeft.compareTo(secondOfRight);
+  }
+
+  public static <K, V, M extends Map<K, V>> M toMap(
+      final Iterable<Pair<K, V>> pairs, final Class<M> mapType) {
+    try {
+      final M map = mapType.newInstance();
+      return toMap(pairs, map);
+    } catch (final Exception exc) {
+      return null;
+    }
+  }
+
+  public static <K, V, M extends Map<K, V>> M toMap(
+      final Iterable<Pair<K, V>> pairs, final M map) {
+    try {
+      for (final Pair<K, V> pair : pairs) {
+        map.put(pair.getFirst(), pair.getSecond());
+      }
+      return map;
+    } catch (final Exception exc) {
+      return null;
+    }
   }
 }

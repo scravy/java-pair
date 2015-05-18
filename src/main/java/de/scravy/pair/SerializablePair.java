@@ -5,6 +5,16 @@ import java.io.Serializable;
 import lombok.Value;
 import lombok.experimental.Wither;
 
+/**
+ * A {@link Pair} which is {@link Serializable}.
+ * 
+ * @author Julian Fleischer
+ * 
+ * @since 1.0.0
+ *
+ * @param <First> The type of the first (left) component.
+ * @param <Second> The type of the second (right) component.
+ */
 @Value
 public class SerializablePair<First extends Serializable, Second extends Serializable>
     implements Pair<First, Second>, Serializable {

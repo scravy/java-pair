@@ -1,13 +1,14 @@
 package de.scravy.pair;
 
+
 /**
  * A pair consisting of a first (left) and a second (right) component.
  * 
  * @author Julian Fleischer
  * @since 1.0.0
  *
- * @param <First>
- * @param <Second>
+ * @param <First> The type of the first (left) component.
+ * @param <Second> The type of the second (right) component.
  */
 public interface Pair<First, Second> {
 

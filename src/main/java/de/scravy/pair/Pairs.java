@@ -29,7 +29,7 @@ public class Pairs {
    */
   public static <First, Second> Pair<First, Second> from(
       final First first, final Second second) {
-    return new SimplePair<First, Second>(first, second);
+    return new ImmutablePair<First, Second>(first, second);
   }
 
   /**
@@ -46,7 +46,7 @@ public class Pairs {
   public static <First extends Comparable<? super First>, Second extends Comparable<? super Second>>
       ComparablePair<First, Second> fromComparables(
           final First first, final Second second) {
-    return new ComparablePair<First, Second>(first, second);
+    return new ImmutableComparablePair<First, Second>(first, second);
   }
 
   /**
@@ -63,7 +63,7 @@ public class Pairs {
   public static <First extends Serializable, Second extends Serializable>
       SerializablePair<First, Second> fromSerializables(
           final First first, final Second second) {
-    return new SerializablePair<First, Second>(first, second);
+    return new ImmutableSerializablePair<First, Second>(first, second);
   }
 
   /**
@@ -81,7 +81,7 @@ public class Pairs {
   public static <First extends Serializable & Comparable<? super First>, Second extends Serializable & Comparable<? super Second>>
       ComparableSerializablePair<First, Second> fromComparableSerializables(
           final First first, final Second second) {
-    return new ComparableSerializablePair<First, Second>(first, second);
+    return new ImmutableComparableSerializablePair<First, Second>(first, second);
   }
 
   /**

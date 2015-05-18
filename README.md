@@ -26,7 +26,7 @@ You want a comparable pair?
 
 	Pair<String, Integer> myPair = Pairs.fromComparables("foo", 42);
 
-and so on - Javadoc: https://scravy.github.io/java-pair
+and so on - **`JAVADOCS`** at https://scravy.github.io/java-pair
 	
 Contributing
 ------------

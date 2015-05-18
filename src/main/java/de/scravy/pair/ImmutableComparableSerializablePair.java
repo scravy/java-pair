@@ -18,7 +18,7 @@ import lombok.experimental.Wither;
  *          The type of the second (right) component.
  */
 @Value
-public class ImmutableComparableSerializablePair<First extends Serializable & Comparable<? super First>, Second extends Serializable & Comparable<? super Second>>
+class ImmutableComparableSerializablePair<First extends Serializable & Comparable<? super First>, Second extends Serializable & Comparable<? super Second>>
     implements ComparableSerializablePair<First, Second>,
     Comparable<ComparableSerializablePair<First, Second>>, Serializable {
 

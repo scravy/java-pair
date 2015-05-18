@@ -1,6 +1,5 @@
 package de.scravy.pair;
 
-
 /**
  * A {@link Pair} which is {@link Comparable}.
  * 
@@ -8,8 +7,10 @@ package de.scravy.pair;
  * 
  * @since 1.0.0
  *
- * @param <First> The type of the first (left) component.
- * @param <Second> The type of the second (right) component.
+ * @param <First>
+ *          The type of the first (left) component.
+ * @param <Second>
+ *          The type of the second (right) component.
  */
 public interface ComparablePair<First extends Comparable<? super First>, Second extends Comparable<? super Second>>
     extends Pair<First, Second>, Comparable<ComparablePair<First, Second>> {

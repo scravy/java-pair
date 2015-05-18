@@ -9,3 +9,4 @@
 .idea
 .*.swp
 .DS_Store
+/doc

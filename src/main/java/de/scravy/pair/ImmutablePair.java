@@ -10,11 +10,13 @@ import lombok.experimental.Wither;
  *
  * @since 1.0.0
  *
- * @param <First> The type of the first (left) component.
- * @param <Second> The type of the second (right) component.
+ * @param <First>
+ *          The type of the first (left) component.
+ * @param <Second>
+ *          The type of the second (right) component.
  */
 @Value
-public class ImmutablePair<First, Second> implements Pair<First, Second> {
+class ImmutablePair<First, Second> implements Pair<First, Second> {
 
   private final @Wither First first;
   private final @Wither Second second;

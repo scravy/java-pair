@@ -105,6 +105,8 @@ public class Pairs {
   /**
    * Write a pair into an array of the common super type of both components.
    * 
+   * @since 1.0.0
+   * 
    * @param pair
    *          The pair.
    * @return The array of the common super type with length 2.
@@ -118,6 +120,14 @@ public class Pairs {
     return target;
   }
 
+  /**
+   * 
+   * @since 1.0.0
+   * 
+   * @param left
+   * @param right
+   * @return
+   */
   public static <First extends Comparable<? super First>, Second extends Comparable<? super Second>>
       int compare(
           final Pair<First, Second> left,
@@ -127,6 +137,16 @@ public class Pairs {
         left.getFirst(), left.getSecond(), right.getFirst(), right.getSecond());
   }
 
+  /**
+   * 
+   * @since 1.0.0
+   * 
+   * @param firstOfLeft
+   * @param secondOfLeft
+   * @param firstOfRight
+   * @param secondOfRight
+   * @return
+   */
   public static <First extends Comparable<? super First>, Second extends Comparable<? super Second>>
       int compare(
           final First firstOfLeft, final Second secondOfLeft,
@@ -184,6 +204,14 @@ public class Pairs {
     return secondOfLeft.compareTo(secondOfRight);
   }
 
+  /**
+   * 
+   * @since 1.0.0
+   * 
+   * @param pairs
+   * @param mapType
+   * @return
+   */
   public static <K, V, M extends Map<K, V>> M toMap(
       final Iterable<Pair<K, V>> pairs, final Class<M> mapType) {
     try {
@@ -194,6 +222,13 @@ public class Pairs {
     }
   }
 
+  /**
+   * @since 1.0.0
+   * 
+   * @param pairs
+   * @param map
+   * @return
+   */
   public static <K, V, M extends Map<K, V>> M toMap(
       final Iterable<Pair<K, V>> pairs, final M map) {
     try {

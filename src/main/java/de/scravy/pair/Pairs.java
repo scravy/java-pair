@@ -8,9 +8,9 @@ import lombok.experimental.UtilityClass;
 
 /**
  * Static methods for dealing with all sorts of pairs.
- * 
+ *
  * @since 1.0.0
- * 
+ *
  * @author Julian Fleischer
  */
 @UtilityClass
@@ -18,9 +18,9 @@ public class Pairs {
 
   /**
    * Create a simple pair from it's first and second component.
-   * 
+   *
    * @since 1.0.0
-   * 
+   *
    * @param first
    *          The first (left) component.
    * @param second
@@ -34,9 +34,9 @@ public class Pairs {
 
   /**
    * Creates a pair from comparables which is itself {@link Comparable}.
-   * 
+   *
    * @since 1.0.0
-   * 
+   *
    * @param first
    *          The first (left) component.
    * @param second
@@ -51,9 +51,9 @@ public class Pairs {
 
   /**
    * Creates a pair from serializables which is itself {@link Serializable}.
-   * 
+   *
    * @since 1.0.0
-   * 
+   *
    * @param first
    *          The first (left) component.
    * @param second
@@ -69,9 +69,9 @@ public class Pairs {
   /**
    * Creates a pair from components which are comparable and serializable which
    * is itself {@link Comparable} and {@link Serializable}.
-   * 
+   *
    * @since 1.0.0
-   * 
+   *
    * @param first
    *          The first (left) component.
    * @param second
@@ -86,7 +86,7 @@ public class Pairs {
 
   /**
    * Transform a pair into an array of the common super type of both components.
-   * 
+   *
    * @param pair
    *          The pair.
    * @param commonSuperType
@@ -104,9 +104,9 @@ public class Pairs {
 
   /**
    * Write a pair into an array of the common super type of both components.
-   * 
+   *
    * @since 1.0.0
-   * 
+   *
    * @param pair
    *          The pair.
    * @return The array of the common super type with length 2.
@@ -121,12 +121,22 @@ public class Pairs {
   }
 
   /**
-   * 
+   * <code>compare(a, b)</code> lexicographically compares the pair
+   * <code>a</code> with the pair <code>b</code>.
+   *
+   * If you create your pairs using
+   * {@link Pairs#fromComparables(Comparable, Comparable)} you have it
+   * {@link Comparable} anyhow.
+   *
    * @since 1.0.0
-   * 
+   *
    * @param left
+   *          The left pair.
    * @param right
-   * @return
+   *          The right pair.
+   * @return <code>0</code> if both pairs are the same, a value less then zero
+   *         if the left pair is lexicographically lesser than the right one, or
+   *         a value greater than zero.
    */
   public static <First extends Comparable<? super First>, Second extends Comparable<? super Second>>
       int compare(
@@ -138,14 +148,26 @@ public class Pairs {
   }
 
   /**
-   * 
+   * <code>compare(a, b, c, d)</code> lexicographically compares the pair
+   * <code>(a, b)</code> with the pair <code>(c, d)</code>.
+   *
+   * If you create your pairs using
+   * {@link Pairs#fromComparables(Comparable, Comparable)} you have it
+   * {@link Comparable} anyhow.
+   *
    * @since 1.0.0
-   * 
+   *
    * @param firstOfLeft
+   *          The first component of the left pair.
    * @param secondOfLeft
+   *          The second component of the left pair.
    * @param firstOfRight
+   *          The first component of the right pair.
    * @param secondOfRight
-   * @return
+   *          The second component of the right pair.
+   * @return <code>0</code> if both pairs are the same, a value less then zero
+   *         if the left pair is lexicographically lesser than the right one, or
+   *         a value greater than zero.
    */
   public static <First extends Comparable<? super First>, Second extends Comparable<? super Second>>
       int compare(
@@ -205,12 +227,17 @@ public class Pairs {
   }
 
   /**
-   * 
+   * Creates a {@link Map} of the given <code>mapType</code> from an
+   * {@link Iterable} of pairs <code>(k, v)</code>.
+   *
    * @since 1.0.0
-   * 
+   *
    * @param pairs
+   *          The pairs.
    * @param mapType
-   * @return
+   *          The map type (must have a public default constructor).
+   * @return The map populated with the values from <code>pairs</code> or
+   *         <code>null</code>, if the Map could not be instantiated.
    */
   public static <K, V, M extends Map<K, V>> M toMap(
       final Iterable<Pair<K, V>> pairs, final Class<M> mapType) {
@@ -223,14 +250,25 @@ public class Pairs {
   }
 
   /**
+   * Adds the pairs from the {@link Iterable} of pairs <code>(k, v)</code> to
+   * the given map.
+   *
    * @since 1.0.0
-   * 
+   *
    * @param pairs
+   *          The key/value pairs.
    * @param map
+   *          The map to add the key/value pairs to.
    * @return
+   *
+   * @throws IllegalArgumentException
+   *           if the given Map is <code>null</code>.
    */
   public static <K, V, M extends Map<K, V>> M toMap(
       final Iterable<Pair<K, V>> pairs, final M map) {
+    if (map == null) {
+      throw new IllegalArgumentException("`map' must not be null.");
+    }
     try {
       for (final Pair<K, V> pair : pairs) {
         map.put(pair.getFirst(), pair.getSecond());

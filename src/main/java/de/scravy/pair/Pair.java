@@ -34,12 +34,12 @@ public interface Pair<First, Second> {
   Second getSecond();
 
   /**
-   * <code>equals</cod> for Pairs works almost the same as for objects, minus
+   * <code>equals</code> for Pairs works almost the same as for objects, minus
    * checking for whether the other object is of the same class.
-   * 
+   *
    * Since all pairs are final and immutable, equals is still an equivalence
    * relation and all pairs (no matter what exact type) are considered equal.
-   * 
+   *
    * Pairs behave like that since version 1.1.0 (unfortunately it was not yet
    * considered in version 1.0.0).
    *

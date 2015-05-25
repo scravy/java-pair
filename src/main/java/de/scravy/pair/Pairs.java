@@ -315,6 +315,10 @@ public class Pairs {
    *
    * @since 1.1.0
    *
+   * @param <F>
+   *          The type of the first component.
+   * @param <S>
+   *          The type of the second component.
    * @param pair
    *          The pair.
    * @return The hash code of that pair.

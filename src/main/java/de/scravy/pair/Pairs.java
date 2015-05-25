@@ -3,6 +3,7 @@ package de.scravy.pair;
 import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.Map;
+import java.util.Objects;
 
 import lombok.experimental.UtilityClass;
 
@@ -259,7 +260,7 @@ public class Pairs {
    *          The key/value pairs.
    * @param map
    *          The map to add the key/value pairs to.
-   * @return
+   * @return The map.
    *
    * @throws IllegalArgumentException
    *           if the given Map is <code>null</code>.
@@ -277,5 +278,57 @@ public class Pairs {
     } catch (final Exception exc) {
       return null;
     }
+  }
+
+  /**
+   * Compares two pairs for equality.
+   *
+   * @since 1.1.0
+   *
+   * @param <F>
+   *          The type of the first component.
+   * @param <S>
+   *          The type of the second component.
+   * @param left
+   *          The left pair.
+   * @param right
+   *          The right pair.
+   * @return Whether the first and the second components of the left and the
+   *         right pair equal each other. This comparison is done using their
+   *         native equals methods.
+   */
+  @SuppressWarnings("rawtypes")
+  public static <F, S> boolean equals(final Pair<F, S> left,
+      final Object right) {
+    if (left == right) {
+      return true;
+    }
+    if (right instanceof Pair) {
+      return Objects.equals(left.getFirst(), ((Pair) right).getFirst())
+          && Objects.equals(left.getSecond(), ((Pair) right).getSecond());
+    }
+    return false;
+  }
+
+  /**
+   * Computes the hash code of a pair.
+   *
+   * @since 1.1.0
+   *
+   * @param pair
+   *          The pair.
+   * @return The hash code of that pair.
+   */
+  public static <F, S> int hashCode(final Pair<F, S> pair) {
+    if (pair == null) {
+      return 0;
+    }
+    final int prime = 31;
+    final F first = pair.getFirst();
+    final S second = pair.getSecond();
+    int result = 1;
+    result = prime * result + ((first == null) ? 0 : first.hashCode());
+    result = prime * result + ((second == null) ? 0 : second.hashCode());
+    return result;
   }
 }

@@ -5,9 +5,9 @@ import lombok.experimental.Wither;
 
 /**
  * A {@link Pair} which is {@link Comparable}.
- * 
+ *
  * @author Julian Fleischer
- * 
+ *
  * @since 1.0.0
  *
  * @param <First>
@@ -24,7 +24,18 @@ class ImmutableComparablePair<First extends Comparable<? super First>, Second ex
   private final @Wither Second second;
 
   @Override
+  public boolean equals(final Object other) {
+    return Pairs.equals(this, other);
+  }
+
+  @Override
+  public int hashCode() {
+    return Pairs.hashCode(this);
+  }
+
+  @Override
   public int compareTo(final ComparablePair<First, Second> other) {
-    return Pairs.compare(first, second, other.getFirst(), other.getSecond());
+    return Pairs.compare(this.first, this.second, other.getFirst(),
+        other.getSecond());
   }
 }
